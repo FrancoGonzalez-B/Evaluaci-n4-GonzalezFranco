@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-18T14:12:17.318Z",
+  "browser": "Microsoft Edge headless / Playwright",
+  "base": "http://127.0.0.1:5173/Evaluaci-n4-GonzalezFranco",
+  "passed": 18,
+  "failed": 0,
+  "checks": [
+    "Inicio redirige a presentación",
+    "Fotografía y navegación activa",
+    "Teclado: saltar al contenido y foco visible",
+    "Rutas SPA sin recargar y enlace activo",
+    "API: éxito, campos y filtro vacío",
+    "Formulario: error, foco al campo y confirmación honesta",
+    "Tema oscuro compartido y persistente",
+    "Ruta desconocida y retorno al inicio",
+    "Diseño móvil 320px: tres rutas sin desbordamiento",
+    "Sin errores JavaScript en consola",
+    "API: estado de carga visible",
+    "API: error HTTP y reintento exitoso",
+    "API: respuesta vacía",
+    "API: datos inválidos se informan como error",
+    "API: caída de red tiene mensaje español",
+    "API: respuesta correcta se reutiliza al volver",
+    "API: cancelar petición pendiente al salir de Proyectos",
+    "API real GitHub: respuesta pública visible"
+  ],
+  "failures": [],
+  "notes": [
+    "Estados controlados con respuestas simuladas; API real verificada en una comprobación separada.",
+    "Capturas de Proyectos con datos de prueba identificados; no son proyectos atribuidos al autor.",
+    "Esta revisión no sustituye una auditoría completa WCAG ni un lector de pantalla."
+  ]
+}

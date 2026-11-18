@@ -1,0 +1,13 @@
+.contact-form { align-self: start; min-width: 0; border: 1px solid #ffffff80; padding: 1.2rem; }
+.contact-form__title { margin-bottom: 1rem; font: 400 1.5rem Georgia, serif; }
+.contact-form__field { display: grid; gap: .35rem; margin-bottom: .9rem; }
+.contact-form__label { font-weight: 700; }
+.contact-form__input { width: 100%; min-width: 0; border: 2px solid #6b7b73; border-radius: 2px; padding: .7rem .8rem; background: #f7f5ef; color: #19352f; }
+.contact-form__input--message { resize: vertical; }
+.contact-form__input[aria-invalid='true'] { border-color: #b6462b; }
+.contact-form__error { margin: 0; color: #ffd1bd; font-size: .85rem; }
+.contact-form__feedback { margin-top: 1rem; border-left: 3px solid var(--boton); padding-left: .8rem; }
+.contact-form__feedback p { margin-bottom: .5rem; }
+.contact-form__mail-link { color: var(--boton); font-weight: 700; text-underline-offset: .2em; }
+.contact-form__note { margin: .8rem 0 0; color: var(--texto-claro); font-size: .8rem; }
+.contact-form :focus-visible { outline-color: #e5a18a; }

@@ -1,0 +1,15 @@
+.github-section { margin-top: 4.5rem; border-top: 1px solid var(--borde); padding-top: 2.5rem; }
+.github-section__heading { max-width: 660px; margin-bottom: 1.5rem; }
+.github-section__eyebrow { color: var(--acento); font-size: .75rem; font-weight: 700; }
+.github-section__title { margin-bottom: .5rem; font: 400 clamp(1.8rem, 4vw, 2.8rem)/1.12 Georgia, serif; }
+.github-section__intro { color: var(--texto-suave); }
+.github-section__search { display: grid; max-width: 430px; gap: .4rem; margin-bottom: .7rem; }
+.github-section__label { font-weight: 700; }
+.github-section__input { width: 100%; min-width: 0; border: 1px solid var(--borde-control); border-radius: 2px; padding: .7rem .8rem; background: var(--panel); color: var(--texto); }
+.github-section__count { color: var(--texto-suave); font-size: .85rem; }
+.github-section__grid { display: grid; gap: 1rem; }
+.status-message { border-left: 3px solid var(--acento); padding: 1rem; background: var(--panel); color: var(--texto); }
+.status-message--error { display: grid; justify-items: start; gap: .8rem; }
+.status-message__text { margin: 0; }
+@media (min-width: 600px) { .github-section__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .github-section__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

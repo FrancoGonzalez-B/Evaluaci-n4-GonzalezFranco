@@ -1,0 +1,6 @@
+.project-card { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; border: 1px solid var(--borde); padding: 1.2rem; background: var(--panel); }
+.project-card__category { margin-bottom: .75rem; color: var(--acento); font-size: .7rem; font-weight: 700; }
+.project-card__title { margin-bottom: .6rem; font: 400 1.4rem/1.25 Georgia, serif; overflow-wrap: anywhere; }
+.project-card__description { margin-bottom: 1rem; color: var(--texto-suave); }
+.project-card__tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: auto 0 0; padding: 0; list-style: none; }
+.project-card__tag { border: 1px solid var(--borde); border-radius: 999px; padding: .2rem .6rem; color: var(--texto-suave); font-size: .75rem; }
