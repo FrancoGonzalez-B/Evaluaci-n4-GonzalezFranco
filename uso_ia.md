@@ -1,41 +1,62 @@
-# Registro de uso de inteligencia artificial
+# Declaración y bitácora de uso de inteligencia artificial
 
 ## 1. Herramientas utilizadas
 
-- ChatGPT/Codex como asistente de planificación, explicación y apoyo de programación.
-- Visual Studio Code para abrir, revisar y ejecutar el proyecto.
-- Git y GitHub para organizar el repositorio y el flujo de cambios.
-- Documentación oficial de React, Vite, React Router y GitHub REST API como referencias técnicas.
+- ChatGPT/Codex para interpretar los requisitos, proponer y modificar código, revisar la estructura y apoyar las explicaciones. La sesión de cierre identifica el modelo como **GPT-6.1-sol**; no se registraron versiones de los modelos de las conversaciones anteriores.
+- Visual Studio Code como editor y entorno de trabajo del estudiante.
+- Git y GitHub para el historial, las ramas y el pull request.
+- Documentación oficial de React, React Router, Vite y GitHub REST como referencia técnica.
 
-## 2. Para qué se utilizaron
+El apoyo de IA fue amplio: participó tanto en la implementación como en la documentación. No se presenta este proyecto como un trabajo escrito completamente sin asistencia.
 
-La asistencia se usó para interpretar la rúbrica, planificar la migración del portafolio estático a React con TypeScript, separar componentes y tipos, diseñar las rutas, preparar la consulta a una API pública y organizar la documentación. La identidad visual y los contenidos personales se basaron en el portafolio de la E2.
+## 2. Propósito de uso
 
-## 3. Prompt recibido
+Se solicitó ayuda para migrar el portafolio HTML/CSS de la E2 a React con TypeScript, interpretar la rúbrica y los documentos del curso, separar responsabilidades, tipar los datos, configurar rutas y consultar repositorios públicos de GitHub.
 
-Solicitud principal del estudiante:
+Después de leer los requisitos más detallados, se usó la asistencia para refactorizar el CSS con BEM, centralizar tipos y datos, extraer el formulario, incorporar cancelación de peticiones, revisar accesibilidad y preparar el flujo de Git y despliegue.
+
+## 3. Prompts representativos
+
+Estos son mensajes reales del estudiante, conservando su escritura:
 
 > “perfecto ahora mira esto tenemos q hacer eso tranformar este portafolio en esto te paso el link del repo trabajaremos en mi vs”
 
-El prompt estuvo acompañado por la rúbrica de la Evaluación 4 y el enlace al repositorio nuevo.
+Ese mensaje incluía las capturas de la rúbrica y el enlace al repositorio nuevo.
 
-## 4. Qué se ajustó de la propuesta
+> “ve estoy y con todo lo que has visto dime que falta?”
 
-- Se conservó la paleta, tipografía, fotografía y estructura visual del portafolio de la E2.
-- Se usó GitHub REST API para que los datos mostrados correspondan a repositorios públicos reales de la cuenta del estudiante.
-- Se incorporaron tipos para la respuesta de API y estados diferenciados para carga, error y éxito.
-- Se usó `HashRouter` para que las rutas del sitio puedan funcionar en hosting estático.
-- Se dejó explícito que el formulario no envía datos a un servidor; valida y prepara un correo.
-- Los nombres y descripciones de los proyectos deben confirmarse con el estudiante para mantenerlos fieles a su trabajo real.
+Ese mensaje acompañaba el archivo de la Sesión 29, después de haber compartido el documento de requisitos técnicos.
 
-## 5. Cómo se verificó
+> “yap y terminalo”
 
-- `npm run build`: completado. TypeScript compiló y Vite generó la carpeta `dist`.
-- `git diff --check`: completado, sin errores de espacios en los cambios.
-- La vista previa interactiva y la navegación por las rutas no se pudieron revisar desde este entorno porque el navegador de trabajo no logró conectarse al servidor local. Falta recorrerlas desde Visual Studio Code.
-- También falta comprobar manualmente en el navegador los estados de la API, el filtro, el reintento, el tema, el formulario, el foco de teclado y el diseño en móvil.
-- `npm audit` informa alertas altas en dependencias de desarrollo de Vite (`picomatch`, `fdir` y `tinyglobby`). Se ejecutó `npm audit fix`, pero el registro de paquetes disponible sigue ofreciendo `picomatch` 4.0.7, que el aviso clasifica como afectado; no se forzó una actualización de versión mayor ni se reemplazó la herramienta de compilación.
+La última instrucción solicitó completar los ajustes identificados. No se inventaron preguntas técnicas para reemplazar estos prompts.
 
-## 6. Reflexión final
+## 4. Output recibido
 
-La IA ayudó a organizar requisitos y proponer una estructura inicial, pero las decisiones deben revisarse contra la rúbrica y el portafolio original. El estudiante debe poder explicar qué hace cada ruta, cómo se consulta la API, cómo se administra el estado y qué limitaciones tiene el formulario. La información personal y las descripciones de proyectos deben ser confirmadas por el estudiante antes de la entrega.
+La IA propuso y escribió una estructura React/TypeScript con páginas, tarjetas reutilizables, datos separados, un contexto de tema, un servicio de GitHub y un hook de consulta. También redactó la documentación y una guía de estudio.
+
+La primera propuesta usó `HashRouter`, un CSS global, algunos tipos dentro de los componentes y una bandera para evitar actualizar una vista desmontada. Al contrastarla con el PDF técnico se identificó que esa propuesta todavía necesitaba ajustes para cumplir la especificación más estricta.
+
+La revisión posterior produjo una migración a `BrowserRouter` desde `react-router-dom`, CSS modular con BEM, tipos centralizados, datos personales fuera del JSX, un componente de formulario y cancelación mediante `AbortController`.
+
+## 5. Ajustes, refactorización y verificación
+
+Los cambios se basaron en el portafolio original, las capturas de la rúbrica, el PDF de requisitos y la Sesión 29. Se conservaron la fotografía, la paleta, la tipografía de títulos y los trabajos de la E2. Se corrigieron la estructura inicial de estilos, el contraste de algunos controles y la jerarquía de encabezados de la primera versión React.
+
+GitHub REST se eligió por su relación con el portafolio y porque esta consulta pública no necesita credenciales. El formulario mantiene un alcance explícito: valida y prepara un correo; su confirmación no afirma que un servidor haya enviado el mensaje.
+
+La implementación y estas correcciones fueron asistidas por IA. Este registro no atribuye al estudiante revisiones manuales que todavía no haya realizado.
+
+**Estado de la verificación:** la versión final completó `npm run build` con TypeScript estricto y `git diff --check`. Se ejecutaron 18 comprobaciones funcionales con Playwright y Microsoft Edge sin ventana: redirección inicial, fotografía, ruta activa, navegación SPA, salto al contenido y foco, API/filtro, validación del formulario, persistencia del tema, página 404, diseño de las tres rutas a 320 px y ausencia de errores JavaScript. También se comprobaron carga, error HTTP con reintento, respuesta vacía, datos mal formados, caída de red, reutilización de la caché y cancelación de peticiones al salir de Proyectos.
+
+Los estados de error y casos límite se probaron con respuestas simuladas identificadas como datos de prueba. En una comprobación separada, la API real de GitHub devolvió los seis repositorios públicos y se mostraron sus tarjetas. Las capturas de escritorio y móvil se revisaron visualmente. El [informe y las evidencias](docs/verificacion/README.md) registran el alcance de estas comprobaciones. No se ejecutaron Lighthouse ni un lector de pantalla, por lo que no se atribuyen resultados de esas herramientas ni una certificación completa WCAG.
+
+La auditoría inicial de npm señaló avisos en dependencias de desarrollo del árbol de Vite. Cualquier cambio de este resultado debe respaldarse con una nueva consulta, no deducirse de que la compilación funciona.
+
+## 6. Reflexión crítica final
+
+Esta reflexión fue redactada con asistencia de IA y describe el proceso; no sustituye la reflexión personal del estudiante sobre lo que puede explicar sin ayuda.
+
+El proceso muestra que generar una primera versión no garantiza cumplir una rúbrica: hubo que contrastar el código con documentos más específicos y corregir decisiones de rutas, estilos y cancelación de peticiones. Un riesgo de deuda cognitiva es usar `useEffect`, Context, tipos o BEM sin comprender por qué están allí.
+
+Para defender este proyecto, el autor necesita explicar el recorrido de un dato desde la API hasta una tarjeta, la diferencia entre props y estado, la función de la limpieza del efecto, la validación del formulario y el flujo de una rama a `main`. La [guía de estudio](docs/GUIA_ESTUDIO.md) permite practicar estas explicaciones sobre el código entregado. La confianza en el resultado debe apoyarse en su ejecución y revisión, además de la asistencia recibida.
