@@ -1,17 +1,27 @@
-import { NavLink, Outlet } from 'react-router'
+import { useEffect, useRef } from 'react'
+import { NavLink, Outlet, useLocation, type NavLinkRenderProps } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
-
-const navigation = [
-  { to: '/sobre-mi', label: 'Sobre mí' },
-  { to: '/proyectos', label: 'Proyectos' },
-  { to: '/contacto', label: 'Contacto' },
-]
+import { navigation, profile } from '../data/portfolio'
+import './SiteLayout.css'
 
 export function SiteLayout() {
   const { theme, toggleTheme } = useTheme()
+  const { pathname } = useLocation()
+  const mainRef = useRef<HTMLElement | null>(null)
+  const previousPath = useRef<string>(pathname)
 
-  function focusMainContent() {
-    document.getElementById('main-content')?.focus()
+  useEffect(() => {
+    const currentPage = navigation.find((item) => item.to === pathname)
+    document.title = `${currentPage?.label ?? 'Página no encontrada'} | ${profile.name}`
+    if (previousPath.current !== pathname) {
+      mainRef.current?.focus()
+      window.scrollTo(0, 0)
+      previousPath.current = pathname
+    }
+  }, [pathname])
+
+  function focusMainContent(): void {
+    mainRef.current?.focus()
   }
 
   return (
@@ -19,18 +29,16 @@ export function SiteLayout() {
       <button className="skip-link" type="button" onClick={focusMainContent}>
         Saltar al contenido
       </button>
-
       <header className="site-header">
-        <div className="header-inner page-shell">
-          <NavLink className="wordmark" to="/sobre-mi" aria-label="Franco González, inicio">
-            Franco González
+        <div className="site-header__inner page-shell">
+          <NavLink className="site-header__name" to="/sobre-mi" aria-label={`${profile.name}, inicio`}>
+            {profile.name}
           </NavLink>
-
-          <nav className="site-nav" aria-label="Navegación principal">
+          <nav className="navbar" aria-label="Navegación principal">
             {navigation.map((item) => (
               <NavLink
-                className={({ isActive }) =>
-                  `nav-link${isActive ? ' is-active' : ''}`
+                className={({ isActive }: NavLinkRenderProps) =>
+                  `navbar__link${isActive ? ' navbar__link--active' : ''}`
                 }
                 key={item.to}
                 to={item.to}
@@ -39,11 +47,10 @@ export function SiteLayout() {
               </NavLink>
             ))}
           </nav>
-
           <button
             aria-label={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
             aria-pressed={theme === 'dark'}
-            className="theme-toggle"
+            className="site-header__theme"
             onClick={toggleTheme}
             type="button"
           >
@@ -51,29 +58,20 @@ export function SiteLayout() {
           </button>
         </div>
       </header>
-
-      <main className="page-main" id="main-content" tabIndex={-1}>
+      <main className="site-main" id="main-content" ref={mainRef} tabIndex={-1}>
         <Outlet />
       </main>
-
       <footer className="site-footer">
-        <div className="footer-inner page-shell">
-          <NavLink className="wordmark footer-wordmark" to="/sobre-mi">
-            Franco González
-          </NavLink>
-          <p>Hecho con curiosidad en Temuco, Chile.</p>
-          <a
-            className="footer-link"
-            href="https://github.com/FrancoGonzalez-B"
-            rel="noreferrer"
-            target="_blank"
-          >
+        <div className="site-footer__inner page-shell">
+          <NavLink className="site-footer__name" to="/sobre-mi">{profile.name}</NavLink>
+          <p className="site-footer__note">Hecho con curiosidad en {profile.city.split(',')[0]}, Chile.</p>
+          <a className="site-footer__link" href={profile.githubUrl} rel="noopener noreferrer" target="_blank">
             Mi GitHub <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div className="footer-bottom page-shell">
-          <span>© 2026 Franco González</span>
-          <span>Portafolio personal · React + TypeScript</span>
+        <div className="site-footer__bottom page-shell">
+          <span>© 2026 {profile.name}</span>
+          <span>Diseñado para personas, hecho para la web.</span>
         </div>
       </footer>
     </>

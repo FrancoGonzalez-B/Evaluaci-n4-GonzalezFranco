@@ -1,0 +1,8 @@
+.page-shell { width: min(1100px, calc(100% - 2rem)); margin-inline: auto; }
+.button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: .5rem; border: 1px solid transparent; border-radius: 3px; padding: .65rem 1rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.button--primary { background: var(--acento-boton); color: var(--texto-boton); }
+.button--primary:hover { filter: brightness(.92); }
+.button--light { background: var(--boton); color: #142c27; }
+.button--outline { border-color: var(--borde-control); background: transparent; color: var(--texto); }
+.button--outline:hover { background: var(--panel); }
+.text-link { color: var(--acento); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: .2em; }

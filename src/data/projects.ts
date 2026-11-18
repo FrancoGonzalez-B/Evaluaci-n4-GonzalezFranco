@@ -1,34 +1,25 @@
-export type PortfolioProject = {
-  id: string
-  category: string
-  name: string
-  description: string
-  technologies: string[]
-}
+import type { PortfolioProject } from '../types'
 
 export const portfolioProjects: PortfolioProject[] = [
   {
     id: 'calculadora-limites',
-    category: 'PROYECTO PERSONAL',
+    category: 'PROYECTO PERSONAL · 2026',
     name: 'Calculadora Gráfica de Límites',
-    description:
-      'Una herramienta para representar límites en el plano cartesiano y explorar su comportamiento.',
+    description: 'Una calculadora que permite graficar límites en el plano cartesiano.',
     technologies: ['Gráficos', 'Matemática'],
   },
   {
     id: 'the-elea',
-    category: 'FRONT-END',
+    category: 'FRONTEND · HTML5',
     name: 'The ELEA',
-    description:
-      'Interfaz de una tienda en línea, organizada para presentar productos y facilitar la navegación.',
+    description: 'Frontend de una tienda online.',
     technologies: ['HTML', 'CSS'],
   },
   {
     id: 'backend-tienda',
-    category: 'BACK-END',
-    name: 'Backend de tienda online',
-    description:
-      'Proyecto de backend para una tienda en línea, como parte del aprendizaje de desarrollo web.',
+    category: 'DESARROLLO BACKEND',
+    name: 'Backend Duro',
+    description: 'Backend de una tienda online.',
     technologies: ['API', 'Backend'],
   },
 ]

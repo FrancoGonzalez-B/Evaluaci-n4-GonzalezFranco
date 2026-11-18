@@ -1,0 +1,6 @@
+.repository-card { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; border: 1px solid var(--borde); padding: 1.2rem; background: var(--panel); }
+.repository-card__category { margin-bottom: .75rem; color: var(--acento); font-size: .7rem; font-weight: 700; }
+.repository-card__title { margin-bottom: .6rem; font: 400 1.4rem/1.25 Georgia, serif; overflow-wrap: anywhere; }
+.repository-card__description { color: var(--texto-suave); overflow-wrap: anywhere; }
+.repository-card__meta { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-top: auto; color: var(--texto-suave); font-size: .78rem; }
+.repository-card__link { margin-top: 1rem; }

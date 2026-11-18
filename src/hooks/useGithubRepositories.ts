@@ -1,30 +1,32 @@
 import { useEffect, useState } from 'react'
 import { getGithubRepositories } from '../services/github'
-import type { RepositoryState } from '../types/github'
+import type { GithubRepositoriesResult, RepositoryState } from '../types'
 
-export function useGithubRepositories() {
-  const [attempt, setAttempt] = useState(0)
+export function useGithubRepositories(): GithubRepositoriesResult {
+  const [attempt, setAttempt] = useState<number>(0)
   const [state, setState] = useState<RepositoryState>({ status: 'loading' })
 
   useEffect(() => {
-    let active = true
+    const controller = new AbortController()
     setState({ status: 'loading' })
 
-    getGithubRepositories()
+    getGithubRepositories(controller.signal)
       .then((repositories) => {
-        if (active) setState({ status: 'success', repositories })
+        if (!controller.signal.aborted) setState({ status: 'success', repositories })
       })
       .catch((error: unknown) => {
-        if (!active) return
+        if (controller.signal.aborted) return
         const message =
-          error instanceof Error
+          error instanceof TypeError
+            ? 'No se pudo conectar con GitHub. Revisa tu conexión e intenta otra vez.'
+            : error instanceof Error
             ? error.message
             : 'No se pudieron cargar los repositorios.'
         setState({ status: 'error', message })
       })
 
     return () => {
-      active = false
+      controller.abort()
     }
   }, [attempt])
 

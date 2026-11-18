@@ -1,0 +1,10 @@
+.contact-page { background: var(--oscuro); color: var(--blanco); --foco: var(--boton); }
+.contact-page__inner { display: grid; gap: 2rem; padding-block: 3.5rem; }
+.contact-page__copy { min-width: 0; }
+.contact-page__eyebrow { color: var(--boton); font-size: .75rem; font-weight: 700; }
+.contact-page__title { margin-bottom: 1.2rem; font: 400 clamp(2.3rem, 6vw, 3.5rem)/1.12 Georgia, serif; }
+.contact-page__highlight { color: var(--boton); }
+.contact-page__intro { max-width: 430px; color: var(--texto-claro); }
+.contact-page__email { display: inline-block; color: var(--blanco); overflow-wrap: anywhere; }
+@media (min-width: 900px) { .contact-page__inner { grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; } }
+@media (min-width: 1200px) { .contact-page__inner { padding-block: 5rem; } }

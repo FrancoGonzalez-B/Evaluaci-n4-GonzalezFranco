@@ -3,15 +3,8 @@ import {
   useContext,
   useEffect,
   useState,
-  type PropsWithChildren,
 } from 'react'
-
-export type Theme = 'light' | 'dark'
-
-type ThemeContextValue = {
-  theme: Theme
-  toggleTheme: () => void
-}
+import type { Theme, ThemeContextValue, ThemeProviderProps } from '../types'
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
@@ -25,7 +18,7 @@ function readSavedTheme(): Theme {
   }
 }
 
-export function ThemeProvider({ children }: PropsWithChildren) {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(readSavedTheme)
 
   useEffect(() => {
@@ -49,7 +42,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   )
 }
 
-export function useTheme() {
+export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext)
 
   if (!context) {

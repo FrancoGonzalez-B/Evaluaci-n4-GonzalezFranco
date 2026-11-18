@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { ThemeProvider } from './context/ThemeContext'
 import './index.css'
+import './styles/shared.css'
 
 const rootElement = document.getElementById('root')
 
@@ -14,9 +15,9 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <HashRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,
 )
