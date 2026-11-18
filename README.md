@@ -130,16 +130,16 @@ La compilación y las 18 comprobaciones funcionales pasaron. Se verificaron nave
 
 ## Publicación en GitHub Pages
 
-El archivo `.github/workflows/deploy.yml` compila y publica `dist/` cuando se integra un cambio en `main`; también permite iniciar el despliegue manualmente.
+El repositorio actual es [evaluacion_4-franco_gonzalez](https://github.com/FrancoGonzalez-B/evaluacion_4-franco_gonzalez), y su origen de publicación en Pages está configurado como **GitHub Actions**. El archivo `.github/workflows/deploy.yml` compila y publica `dist/` cuando se integra un cambio en `main`; también permite iniciar el despliegue manualmente.
 
 1. En GitHub abre el repositorio y ve a **Settings > Pages**.
 2. En **Build and deployment > Source**, selecciona **GitHub Actions**.
 3. Integra el pull request en `main` o ejecuta el flujo desde **Actions**.
 4. Espera a que termine el trabajo de despliegue y abre la URL que muestra GitHub Pages.
 
-Durante la compilación se prepara `404.html` con la aplicación para que GitHub Pages pueda servir el punto de entrada al abrir una ruta directamente. La ruta comodín de React muestra la vista 404 si esa dirección no existe. El workflow define `VITE_BASE_PATH` a partir del nombre actual del repositorio; `vite.config.ts` usa esa variable y tiene como base local predeterminada `/Evaluaci-n4-GonzalezFranco/`.
+Durante la compilación se prepara `404.html` con la aplicación para que GitHub Pages pueda servir el punto de entrada al abrir una ruta directamente. La ruta comodín de React muestra la vista 404 si esa dirección no existe. El workflow define `VITE_BASE_PATH` a partir del nombre actual del repositorio; `vite.config.ts` usa esa variable y tiene como base local predeterminada `/evaluacion_4-franco_gonzalez/`.
 
-El repositorio actual es [Evaluaci-n4-GonzalezFranco](https://github.com/FrancoGonzalez-B/Evaluaci-n4-GonzalezFranco). Su nombre todavía requiere el ajuste de administración solicitado en la evaluación: en **Settings > General > Repository name**, cambiarlo a `evaluacion_4-franco_gonzalez`. Después se debe actualizar la URL del remoto local con `git remote set-url origin NUEVA_URL`. El despliegue toma automáticamente el nuevo nombre; para que la dirección local coincida, también se puede actualizar la base predeterminada de `vite.config.ts`.
+La dirección prevista del sitio es [francogonzalez-b.github.io/evaluacion_4-franco_gonzalez](https://francogonzalez-b.github.io/evaluacion_4-franco_gonzalez/). Estará disponible cuando el flujo de publicación termine correctamente; seleccionar el origen de Pages por sí solo no confirma que el despliegue se haya completado.
 
 ## Dónde cambiar mi contenido
 
